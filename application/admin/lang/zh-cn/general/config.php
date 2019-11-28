@@ -9,6 +9,7 @@ return [
     'Value'                       => '变量值',
     'Basic'                       => '基础配置',
     'Email'                       => '邮件配置',
+    'Recharge'                    => '充值配置',
     'Attachment'                  => '附件配置',
     'Dictionary'                  => '字典配置',
     'User'                        => '会员配置',

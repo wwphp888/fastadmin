@@ -3,6 +3,7 @@
 namespace app\index\controller;
 
 use app\common\controller\Frontend;
+use app\common\library\Pay;
 
 class Index extends Frontend
 {
@@ -13,7 +14,13 @@ class Index extends Frontend
 
     public function index()
     {
-        return $this->view->fetch();
+        $data = [
+            'orderno' => time(),
+            'amount' => 1,
+            'body' => 'testsss',
+        ];
+        $pay = Pay::send(1, 'scan', $data);
+        dump($pay);
     }
 
     public function news()

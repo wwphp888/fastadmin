@@ -18,15 +18,13 @@ return array (
     'default' => 'Default',
     'page' => 'Page',
     'article' => 'Article',
-    'test' => 'Test',
   ),
   'configgroup' => 
   array (
     'basic' => 'Basic',
     'email' => 'Email',
+    'recharge' => 'Recharge',
     'dictionary' => 'Dictionary',
-    'user' => 'User',
-    'example' => 'Example',
   ),
   'mail_type' => '1',
   'mail_smtp_host' => 'smtp.qq.com',
@@ -35,5 +33,22 @@ return array (
   'mail_smtp_pass' => 'password',
   'mail_verify_type' => '2',
   'mail_from' => '10000@qq.com',
-  'desc' => '',
+  'recharge_tip' => '余额可用于购买商品或用于商城消费',
+  'recharge_money_list' => 
+  array (
+    '￥10' => '10',
+    '￥20' => '20',
+    '￥30' => '30',
+    '￥50' => '50',
+    '￥100' => '100',
+  ),
+  'recharge_default_money' => '10',
+  'recharge_min_money' => '0.1',
+  'recharge_iscustommoney' => '',
+  'recharge_paylist' => 
+  array (
+    0 => '1',
+  ),
+  'recharge_default_pay' => '1',
+  'recharge_ordercreatelimit' => '0',
 );

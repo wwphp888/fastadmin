@@ -26,7 +26,7 @@ if (!is_file(APP_PATH . 'admin/command/Install/install.lock'))
 require __DIR__ . '/../thinkphp/base.php';
 
 // 绑定到admin模块
-\think\Route::bind('admin');
+\think\Route::bind('index');
 
 // 关闭路由
 \think\App::route(false);

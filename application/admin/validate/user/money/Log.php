@@ -1,10 +1,10 @@
 <?php
 
-namespace app\admin\validate;
+namespace app\admin\validate\user\money;
 
 use think\Validate;
 
-class Test extends Validate
+class Log extends Validate
 {
     /**
      * 验证规则
