@@ -1,7 +1,7 @@
 <?php
 
 return array (
-  'name' => 'FastAdmin',
+  'name' => '11',
   'beian' => '',
   'cdnurl' => '',
   'version' => '1.0.1',
@@ -24,6 +24,7 @@ return array (
     'basic' => 'Basic',
     'email' => 'Email',
     'recharge' => 'Recharge',
+    'pay' => 'Pay',
     'dictionary' => 'Dictionary',
   ),
   'mail_type' => '1',
@@ -44,7 +45,7 @@ return array (
   ),
   'recharge_default_money' => '10',
   'recharge_min_money' => '0.1',
-  'recharge_iscustommoney' => '',
+  'recharge_iscustommoney' => '1',
   'recharge_paylist' => 
   array (
     0 => '1',
