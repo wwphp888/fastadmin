@@ -3,9 +3,10 @@
 namespace app\common\library;
 
 use Yansongda\Pay\Pay as PayApi;
+use think\Config;
 
 /**
- * 短信验证码类
+ * 支付类
  */
 class Pay
 {
@@ -34,11 +35,21 @@ class Pay
      */
     public static function wxpay($mode, $data = [])
     {
+        $setting = Config::get('setting');
+
+        if (empty($setting['pay']['wxpay'])) {
+            throw new \Exception('微信支付未设置');
+        }
+        $pay = $setting['pay']['wxpay'];
+        if (empty($pay['app_id']) || empty($pay['mch_id']) || empty($pay['key']) || empty($pay['notify_url'])) {
+            throw new \Exception('微信支付设置不完整');
+        }
+
         $config = [
-            'app_id' => 'wx5239dda9b1a7bb2a',
-            'mch_id' => '1520247871',
-            'key' => '8f41c6b26031cdfe47415c3376bb621c',
-            'notify_url' => 'http://yanda.net.cn/notify.php',
+            'app_id'  => $pay['app_id'],
+            'mch_id' => $pay['mch_id'],
+            'key' => $pay['key'],
+            'notify_url' => $pay['notify_url'],
             'http' => [
                 'timeout' => 3,
                 'connect_timeout' => 3,
@@ -64,12 +75,22 @@ class Pay
      */
     public static function alipay($mode, $data = [])
     {
+        $setting = Config::get('setting');
+
+        if (empty($setting['pay']['alipay'])) {
+            throw new \Exception('微信支付未设置');
+        }
+        $pay = $setting['pay']['alipay'];
+        if (empty($pay['app_id']) || empty($pay['notify_url']) || empty($pay['return_url']) || empty($pay['private_key'])) {
+            throw new \Exception('支付宝设置不完整');
+        }
+
         $config = [
-            'app_id' => '2088331662165740',
-            'notify_url' => 'http://yanda.net.cn/notify.php',
-            'return_url' => 'http://yanda.net.cn/notify.php',
+            'app_id' => $pay['app_id'],
+            'notify_url' => $pay['notify_url'],
+            'return_url' => $pay['return_url'],
             //'ali_public_key' => 'lejian201811@163.com',
-            'private_key' => 'h1rrpybot1b5omqmi27wa96fewe18q8c',
+            'private_key' => $pay['private_key'],
             'http' => [
                 'timeout' => 3,
                 'connect_timeout' => 3,

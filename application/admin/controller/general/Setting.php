@@ -26,6 +26,7 @@ class Setting extends Backend
      */
     public function index()
     {
+        \think\Queue::push('app\common\jobs\SmsJob', []);exit;
         error_reporting(E_ALL ^ E_NOTICE);
         $data = config('setting');
         $this->assign($data);
