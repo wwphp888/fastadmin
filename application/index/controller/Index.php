@@ -4,6 +4,7 @@ namespace app\index\controller;
 
 use app\common\controller\Frontend;
 use app\common\library\Pay;
+use fast\Form;
 
 class Index extends Frontend
 {
@@ -14,13 +15,7 @@ class Index extends Frontend
 
     public function index()
     {
-        $data = [
-            'orderno' => time(),
-            'amount' => 1,
-            'body' => 'testsss',
-        ];
-        $pay = Pay::send(1, 'scan', $data);
-        dump($pay);
+        return Form::select('wee', [1,2,3,4], 1);
     }
 
     public function news()

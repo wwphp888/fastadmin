@@ -4,10 +4,11 @@ namespace app\admin\controller\general;
 
 use app\common\controller\Backend;
 use app\common\library\Email;
+use think\Config;
 use think\Validate;
 
 /**
- * 系统配置
+ * 系统设置
  * @remark 系统设置
  */
 class Setting extends Backend
@@ -18,6 +19,7 @@ class Setting extends Backend
     public function _initialize()
     {
         parent::_initialize();
+        error_reporting(E_ALL ^ E_NOTICE);
         $this->model = model('Setting');
     }
 
@@ -26,9 +28,7 @@ class Setting extends Backend
      */
     public function index()
     {
-        \think\Queue::push('app\common\jobs\SmsJob', []);exit;
-        error_reporting(E_ALL ^ E_NOTICE);
-        $data = config('setting');
+        $data = Config::get('setting');
         $this->assign($data);
         return $this->fetch();
     }
@@ -42,13 +42,16 @@ class Setting extends Backend
         $name = $this->request->get('name');
         $value = $this->request->post('value/a');
         $is = $this->model->where(['name' => $name])->find();
+        $value = $this->parseData($value);
         $value = json_encode($value);
         if ($is) {
-            $this->model->where(['name' => $name])->update(['value' => $value]);
+            $res = $this->model->save(['value' => $value], ['name' => $name]);
         } else {
-            $this->model->insert(['name' => $name, 'value' => $value]);
+            $res = $this->model->save(['name' => $name, 'value' => $value]);
         }
-        $this->refreshFile();
+        if ($res) {
+            $this->refreshFile();
+        }
         $this->success();
     }
 
@@ -94,5 +97,25 @@ class Setting extends Backend
         } else {
             return $this->error(__('Invalid parameters'));
         }
+    }
+
+    /**
+     * @desc 解析设置数据
+     * @param $data
+     * @return mixed
+     */
+    protected function parseData($data)
+    {
+        foreach ($data as &$v) {
+            if (is_array($v)) {
+                foreach ($v as &$v1) {
+                    $v1 = null == json_decode($v1, true) ? $v1 : json_decode($v1, true);
+                }
+            } else {
+                $v = null == json_decode($v, true) ? $v : json_decode($v, true);
+            }
+        }
+
+        return $data;
     }
 }

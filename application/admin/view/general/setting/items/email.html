@@ -1,6 +1,6 @@
-<div class="tab-pane fade" id="pay">
+<div class="tab-pane fade" id="email">
     <div class="widget-body no-padding">
-        <form id="pay-form" class="form-horizontal edit-form" role="form" data-toggle="validator" method="POST" action="{:url('general.setting/edit?name=pay')}">
+        <form id="pay-form" class="form-horizontal edit-form" role="form" data-toggle="validator" method="POST" action="{:url('general.setting/edit?name=email')}">
             {:token()}
             <table class="table table-striped">
                 <thead>
@@ -11,113 +11,98 @@
                 </tr>
                 </thead>
                 <tbody>
+
                 <tr>
-                    <td style="text-align: center;font-weight: bold">微信支付</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>{:__('App id')}</td>
+                    <td>{:__('Mail type')}</td>
                     <td>
                         <div class="row">
                             <div class="col-sm-8 col-xs-12">
-                                <input type="text" name="value[wxpay][app_id]" value="{$pay.wxpay.app_id}" class="form-control"/>
+                                <input type="text" name="value[email][type]" value="{$email.type}" class="form-control"/>
                             </div>
                             <div class="col-sm-4"></div>
                         </div>
                     </td>
-                    <td>pay.wxpay.app_id</td>
-                </tr>
-                <tr>
-                    <td>{:__('Mch id')}</td>
-                    <td>
-                        <div class="row">
-                            <div class="col-sm-8 col-xs-12">
-                                <input type="text" name="value[wxpay][mch_id]" value="{$pay.wxpay.mch_id}" class="form-control"/>
-                            </div>
-                            <div class="col-sm-4"></div>
-                        </div>
-                    </td>
-                    <td>pay.wxpay.mch_id</td>
-                </tr>
-                <tr>
-                    <td>{:__('Key')}</td>
-                    <td>
-                        <div class="row">
-                            <div class="col-sm-8 col-xs-12">
-                                <input type="text" name="value[wxpay][key]" value="{$pay.wxpay.key}" class="form-control"/>
-                            </div>
-                            <div class="col-sm-4"></div>
-                        </div>
-                    </td>
-                    <td>pay.wxpay.key</td>
-                </tr>
-                <tr>
-                    <td>{:__('Notify url')}</td>
-                    <td>
-                        <div class="row">
-                            <div class="col-sm-8 col-xs-12">
-                                <input type="text" name="value[wxpay][notify_url]" value="{$pay.wxpay.notify_url}" class="form-control"/>
-                            </div>
-                            <div class="col-sm-4"></div>
-                        </div>
-                    </td>
-                    <td>pay.wxpay.notify_url</td>
+                    <td>email.type</td>
                 </tr>
 
                 <tr>
-                    <td style="text-align: center;font-weight: bold">支付宝</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>APPID</td>
+                    <td>{:__('Mail smtp host')}</td>
                     <td>
                         <div class="row">
                             <div class="col-sm-8 col-xs-12">
-                                <input type="text" name="value[alipay][app_id]" value="" class="form-control" data-rule="require" data-tip=""/>
+                                <input type="text" name="value[email][host]" value="{$email.host}" class="form-control" data-tip=""/>
                             </div>
                             <div class="col-sm-4"></div>
                         </div>
                     </td>
-                    <td>pay.alipay.app_id</td>
+                    <td>email.host</td>
                 </tr>
+
                 <tr>
-                    <td>商户ID</td>
+                    <td>{:__('Mail smtp port')}</td>
                     <td>
                         <div class="row">
                             <div class="col-sm-8 col-xs-12">
-                                <input type="text" name="value[alipay][mch_id]" value="" class="form-control" data-rule="require" data-tip=""/>
+                                <input type="text" name="value[email][port]" value="{$email.port}" class="form-control" data-tip=""/>
                             </div>
                             <div class="col-sm-4"></div>
                         </div>
                     </td>
-                    <td>pay.alipay.mch_id</td>
+                    <td>email.port</td>
                 </tr>
+
                 <tr>
-                    <td>商户密钥</td>
+                    <td>{:__('Mail smtp user')}</td>
                     <td>
                         <div class="row">
                             <div class="col-sm-8 col-xs-12">
-                                <input type="text" name="value[alipay][key]" value="" class="form-control" data-rule="require" data-tip=""/>
+                                <input type="text" name="value[email][user]" value="{$email.user}" class="form-control" data-tip=""/>
                             </div>
                             <div class="col-sm-4"></div>
                         </div>
                     </td>
-                    <td>pay.alipay.key</td>
+                    <td>email.user</td>
                 </tr>
+
                 <tr>
-                    <td>回调地址</td>
+                    <td>{:__('Mail smtp password')}</td>
                     <td>
                         <div class="row">
                             <div class="col-sm-8 col-xs-12">
-                                <input type="text" name="value[alipay][notify_url]" value="" class="form-control" data-rule="require" data-tip=""/>
+                                <input type="text" name="value[email][password]" value="{$email.password}" class="form-control" data-tip=""/>
                             </div>
                             <div class="col-sm-4"></div>
                         </div>
                     </td>
-                    <td>pay.alipay.notify_url</td>
+                    <td>email.password</td>
                 </tr>
+
+                <tr>
+                    <td>{:__('Mail vertify type')}</td>
+                    <td>
+                        <div class="row">
+                            <div class="col-sm-8 col-xs-12">
+                                <input type="text" name="value[email][vertify_type]" value="{$email.vertify_type}" class="form-control" data-tip=""/>
+                            </div>
+                            <div class="col-sm-4"></div>
+                        </div>
+                    </td>
+                    <td>email.vertify_type</td>
+                </tr>
+
+                <tr>
+                    <td>{:__('Mail from')}</td>
+                    <td>
+                        <div class="row">
+                            <div class="col-sm-8 col-xs-12">
+                                <input type="text" name="value[email][from]" value="{$email.from}" class="form-control" data-tip=""/>
+                            </div>
+                            <div class="col-sm-4"></div>
+                        </div>
+                    </td>
+                    <td>email.from</td>
+                </tr>
+
                 </tbody>
                 <tfoot>
                 <tr>

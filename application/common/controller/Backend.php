@@ -185,7 +185,7 @@ class Backend extends Controller
         // 语言检测
         $lang = strip_tags($this->request->langset());
 
-        $site = Config::get("site");
+        $site = Config::get("setting.site");
 
         $upload = \app\common\model\Config::upload();
 

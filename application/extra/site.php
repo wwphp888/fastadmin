@@ -22,9 +22,6 @@ return array (
   'configgroup' => 
   array (
     'basic' => 'Basic',
-    'email' => 'Email',
-    'recharge' => 'Recharge',
-    'pay' => 'Pay',
     'dictionary' => 'Dictionary',
   ),
   'mail_type' => '1',
